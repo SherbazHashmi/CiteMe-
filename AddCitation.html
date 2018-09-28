@@ -4,7 +4,7 @@
 <!-- The sidebar will have a input box and the search button -->
 <div class="sidebar">
     <!-- Form -->
-    <div class="block form-group">
+    <div class="block form-group" id = "bfg">
         <select name="type" id="citeType">
             <option value="book">Book</option>
             <option value="blog">Blog</option>
@@ -91,7 +91,7 @@ $(function() {
 
 function makeForm(fields) {
      for (var i = 0; i < fields.length; i++) {
-        var form = document.getElementById("block form-group");
+        var form = document.getElementById("bfg");
         field = document.createElement("input");
         field.setAttribute('type','text');
         field.appendChild(document.createTextNode(fields[i]));
