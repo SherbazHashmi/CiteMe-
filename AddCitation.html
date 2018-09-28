@@ -1,0 +1,112 @@
+<!-- Use this CSS stylesheet to ensure that add-ons styling 
+     matches the default Google Docs styles -->
+<link href="https://ssl.gstatic.com/docs/script/css/add-ons.css" rel="stylesheet">
+<!-- The sidebar will have a input box and the search button -->
+<div class="sidebar">
+    <!-- Form -->
+    <div class="block form-group">
+        <select name="type" id="citeType">
+            <option value="book">Book</option>
+            <option value="blog">Blog</option>
+            <option value="elecArticle">Electronic Article</option>
+            <option value="journal">Journal</option>
+            <option value="dataset">Dataset</option>
+    <!--    <option value="aggDB">Aggrelated Database </option>
+            <option value="ancText">Ancient Text</option>
+            <option value="art">Artwork</option>
+            <option value="av">Audio Visual</option>
+            <option value="bill">Bill</option>
+            <option value="blog">Blog </option>
+            <option value="book">Book </option>
+            <option value="bookSel">Book Selection</option>
+            <option value="case">Case</option>
+            <option value="catalog">Catalog</option>
+            <option value="chart"> Chart or Table </option>
+            <option value="classical"> Classical Work </option>
+            <option value="prog">Computer Program</option>
+            <option value="confPaper">Conference Paper</option>
+            <option value="confProc">Conference Procedings</option>
+            <option value="dataset">Dataset</option>
+            <option value="dictionary">Dictionary</option>
+            <option value="editedBook">Edited Book</option>
+            <option value="elecArticle">Electronic Article</option>
+            <option value="elecBook">Electronic Book</option>
+            <option value="elecBookSelection">Electronic Book Selection</option>
+            <option value="ency">Encyclopedia</option>
+            <option value="eq">Equation</option>
+            <option value="figure">Figure</option>
+            <option value="film">Film or Broadcast</option>
+            <option value="generic">Generic</option>
+            <option value="govt">Government Document</option>
+            <option value="grant">Grant</option>
+            <option value="hearing">Hearing</option>
+            <option value="interview">Interview</option>
+            <option value="journal">Journal Article</option>
+            <option value="legal">Legal Rule and Regulation</option>
+            <option value="mag">Magazine Article</option>
+            <option value="manu">Manuscript</option>
+            <option value="map">Maps</option>
+            <option value="music">Music</option>
+            <option value="newspaper">Newspaper Article</option>
+            <option value="onlineDB">Online Database</option>
+            <option value="onlineMulti">Online Multimedia</option>
+            <option value="pamphlet">Pamphlet</option>
+            <option value="patent">Patent</option>
+            <option value="pc">Personal Communication</option>
+            <option value="podcast">Podcast</option>
+            <option value="press">Press Release</option>
+            <option value="report">Report</option>
+            <option value="serial">Serial</option>
+            <option value="statue">Statue</option>
+            <option value="thesis">Thesis</option>
+            <option value="unpub">Unpublished Work</option> -->
+        </select>
+        <button class="blue" id="select_type">Select Type</button>
+    </div>
+    
+</div>
+
+
+<!-- Load the jQuery library from the Google CDN -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"> </script>
+<script>
+// Attach click handlers after the Sidebar has loaded in Google Docs
+$(function() {
+// Prints whatever needed based on this. 
+    $('#select_type').click(function() {
+      var value = $( "select#citeType option:selected" ).val();
+      console.log(value);
+    });
+
+    // If the user presses the Enter key in the search box, perform a search
+    $('#search').keyup(function(e) {
+        if (e.keyCode === 13) {
+            $('#load_maps').click();
+        }
+    });
+
+    // When a user clicks the thumbnail image in the sidebar, call 
+    // insertGoogleMap to insert the maps image in the current document
+    $('#maps').click(function() {
+        google.script.run.insertGoogleMap($('#search').val());
+    });
+
+});
+
+function generateFields (type) {
+  switch (type) {
+    case "elecArticle": 
+      [];
+      break;
+    case "dataset": 
+      break;
+    case "book": 
+      break;
+    case "blog": 
+      break;
+    case "journal": 
+      break;
+    
+  }
+}
+</script>
