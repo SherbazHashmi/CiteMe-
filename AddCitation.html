@@ -91,7 +91,7 @@ $(function() {
 
 function makeForm(fields) {
      for (var i = 0; i < fields.length; i++) {
-        var form = document.getElementByID("block form-group");
+        var form = document.getElementById("block form-group");
         field = document.createElement("input");
         field.setAttribute('type','text');
         field.appendChild(document.createTextNode(fields[i]));
