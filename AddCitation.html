@@ -75,15 +75,11 @@ $(function() {
 // Prints whatever needed based on this. 
     $('#select_type').click(function() {
       var value = $( "select#citeType option:selected" ).val();
+      let fields = generateFields(value);
+      makeForm(fields);
       console.log(value);
     });
 
-    // If the user presses the Enter key in the search box, perform a search
-    $('#search').keyup(function(e) {
-        if (e.keyCode === 13) {
-            $('#load_maps').click();
-        }
-    });
 
     // When a user clicks the thumbnail image in the sidebar, call 
     // insertGoogleMap to insert the maps image in the current document
@@ -93,18 +89,32 @@ $(function() {
 
 });
 
+function makeForm(fields) {
+     for (var i = 0; i < fields.length; i++) {
+        var form = document.getElementByID("block form-group");
+        field = document.createElement("input");
+        field.setAttribute('type','text');
+        field.appendChild(document.createTextNode(fields[i]));
+        form.appendChild(field);
+
+     }
+}
+
 function generateFields (type) {
   switch (type) {
     case "elecArticle": 
-      [];
-      break;
+      return ["Author","Year","Title","Journal","Volume","Issue","Pages","Start Page", "Epub Date","Date","Type of Article","Short Title","Alternate Journal","ISSN","DOI","Original Publication","Reprint Edition","Reviewed Item","Legal Note","PMCID","NIHMSID","Article Number", "Accession Number", "Call Number","Label","Keywords","Abstract","Notes","Research Notes","URL","File Attachments","Author Address","Figure","Caption", "Access Date","Translated Author","Translated Title","Name of Database","Database Provider","Language"];
     case "dataset": 
+        return [];
       break;
     case "book": 
+      return [];
       break;
     case "blog": 
+      return [];
       break;
     case "journal": 
+      return [];
       break;
     
   }
