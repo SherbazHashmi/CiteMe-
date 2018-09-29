@@ -78,7 +78,7 @@ $(function() {
       clearForm();
       let fields = generateFields(value);
       makeForm(fields);
-      console.log(value);
+      //console.log(value);
     });
 
 
@@ -92,7 +92,8 @@ $(function() {
 
 function clearForm() {
   let form = document.getElementById("bfg");
-  for (var i = form.elements.length; i == 0; i--) {
+  for (var i = form.childElementCount; i == 0; i--) {
+    console.log(form.childElementCount)
     form.removeChild(form[i]);
   }
 }
@@ -107,7 +108,7 @@ function makeForm(fields) {
         field.setAttribute('id',''+name);
         field.setAttribute('placeholder', name);
         field.style.margin = "10px 0px 0px 0px";
-        console.log(name);
+        //console.log(name);
         form.appendChild(field);
      }
 }
