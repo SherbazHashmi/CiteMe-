@@ -75,6 +75,7 @@ $(function() {
 // Prints whatever needed based on this. 
     $('#select_type').click(function() {
       var value = $( "select#citeType option:selected" ).val();
+      clearForm();
       let fields = generateFields(value);
       makeForm(fields);
       console.log(value);
@@ -91,6 +92,9 @@ $(function() {
 
 function clearForm() {
   let form = document.getElementById("bfg");
+  for (var i = form.elements.length; i == 0; i--) {
+    form.removeChild(form[i]);
+  }
 }
 
 function makeForm(fields) {
