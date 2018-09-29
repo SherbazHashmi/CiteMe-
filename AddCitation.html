@@ -94,6 +94,9 @@ function makeForm(fields) {
         var form = document.getElementById("bfg");
         field = document.createElement("input");
         field.setAttribute('type','text');
+        field.setAttribute('class','fields');
+        field.setAttribute('id',''+fields[i])
+        console.log(field.id.val())
         field.appendChild(document.createTextNode(fields[i]));
         form.appendChild(field);
 
