@@ -89,17 +89,22 @@ $(function() {
 
 });
 
+function clearForm() {
+  let form = document.getElementById("bfg");
+}
+
 function makeForm(fields) {
      for (var i = 0; i < fields.length; i++) {
         var form = document.getElementById("bfg");
         field = document.createElement("input");
         field.setAttribute('type','text');
         field.setAttribute('class','fields');
-        field.setAttribute('id',''+fields[i])
-        console.log(field.id)
-        field.appendChild(document.createTextNode(fields[i]));
+        let name = fields[i];
+        field.setAttribute('id',''+name);
+        field.setAttribute('placeholder', name);
+        field.style.margin = "10px 0px 0px 0px";
+        console.log(name);
         form.appendChild(field);
-
      }
 }
 
