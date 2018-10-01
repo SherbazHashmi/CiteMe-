@@ -5,6 +5,7 @@
 <div class="sidebar">
     <!-- Form -->
     <div class="block form-group" id = "bfg">
+      <div id = "header"> 
         <select name="type" id="citeType">
             <option value="book">Book</option>
             <option value="blog">Blog</option>
@@ -62,8 +63,13 @@
             <option value="unpub">Unpublished Work</option> -->
         </select>
         <button class="blue" id="select_type">Select Type</button>
-    </div>
-    
+        </div>
+        <div id = "flexibleFields"> </div>
+        <div id = "footer"> 
+          <button class="blue" id="add_citation">Add Citation</button>
+        </div>
+        </div> 
+        
 </div>
 
 
@@ -80,38 +86,34 @@ $(function() {
       makeForm(fields);
       //console.log(value);
     });
-
-
-    // When a user clicks the thumbnail image in the sidebar, call 
-    // insertGoogleMap to insert the maps image in the current document
-    $('#maps').click(function() {
-        google.script.run.insertGoogleMap($('#search').val());
+    
+    // Add Citation Function Handler
+    $('#add_citation').click(function() {
+       
     });
 
 });
 
 function clearForm() {
-  let form = document.getElementById("bfg");
-  for (var i = form.childElementCount; i >= 0; i--) {
-    if(!(form.childNodes[i].id == 'select_type' || form.childNodes[i].id == 'citeType')){
-    console.log(form.childElementCount)
-    form.removeChild(form.childNodes[i]);
-    }
-  }
+  let fieldContainer = document.getElementById("fieldContainer");
+  if(fieldContainer != null && fieldContainer.parentNode != null)
+    fieldContainer.parentNode.removeChild(fieldContainer);
 }
 
 function makeForm(fields) {
+  var form = document.getElementById("flexibleFields");
+  var fieldContainer = document.createElement("div");
+  fieldContainer.setAttribute('id','fieldContainer')
      for (var i = 0; i < fields.length; i++) {
-        var form = document.getElementById("bfg");
-        field = document.createElement("input");
+        var field = document.createElement("input");
         field.setAttribute('type','text');
         field.setAttribute('class','fields');
         let name = fields[i];
-        field.setAttribute('id',''+name);
+        field.setAttribute('id',name);
         field.setAttribute('placeholder', name);
         field.style.margin = "10px 0px 0px 0px";
-        //console.log(name);
-        form.appendChild(field);
+        form.appendChild(fieldContainer);
+        fieldContainer.appendChild(field);
      }
 }
 
